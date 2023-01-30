@@ -36,7 +36,7 @@ const Home: NextPage = () => {
         <Grid item xs={5}>
         </Grid>
         <Grid item xs={6}>
-          <Image src={logo} alt="tenahty5" width={300} height={200} />
+         
         </Grid>
         <Grid item xs={6}>
           <h2 style={{ textAlign: 'center',fontSize:50,fontWeight:"bold" }}>مجموعات اعدادي</h2>
@@ -45,7 +45,6 @@ const Home: NextPage = () => {
           <h2 style={{ textAlign: 'center', fontSize:50,fontWeight:"bold"}} >مجموعات ثانوي</h2>
         </Grid>
         <Grid item xs={1}>
-
         </Grid>
         <Grid item xs={4}>
           <TableContainer component={Paper}>
@@ -73,7 +72,7 @@ const Home: NextPage = () => {
           </TableContainer>
         </Grid>
         <Grid item xs={2}>
-
+        <Image src={logo} alt="tenahty5" width={300} height={200} />
         </Grid>
         <Grid item xs={4}>
           <TableContainer component={Paper}>
@@ -102,55 +101,7 @@ const Home: NextPage = () => {
         </Grid>
       </Grid>
 
-      {/* <Grid.Container gap={2} justify="center" height="100px">
-      <Grid xs={24}>
-          <Image src={logo} alt="tenahty5" width={500} height={500} />
-        </Grid>
-        {/* <Grid xs={12}>
-          <Text h1>اعدادي</Text>
-        </Grid>
-        <Grid xs={12}>
-          <Text h1 >ثانوي</Text>
-        </Grid> */}
-      {/* {PrepScores?.map((score: any, index: any) => {
-          dataprep.push({ property: score.points, description: score.name, type: 'secondary | warning', default: '-' })
-          return <>
-          <Grid xs={6} key={index}>
-            <Card>
-              <Text h4>{score.name}</Text>
-              <Text h4>{score.points}</Text>
-            </Card>
-          </Grid>
-          </>;
-        })} */}
-      {/* {SecScores?.map((score: any, index: any) => {
-          datasec.push({ property: score.points, description: score.name, type: 'secondary | warning', default: '-' })
-          return <>
-          <Grid xs={6} key={index}>
-            <Card>
-              <Text h4>{score.name}</Text>
-              <Text h4>{score.points}</Text>
-            </Card>
-          </Grid>
-          </>;
-        })} */}
-      {/* <Grid xs={10}>
-          <Card width="50%">
-            <Table data={dataprep}>
-            <Table.Column prop="property" label="النقاط" />
-            <Table.Column prop="description" label="المجموعة" />
-          </Table>
-          </Card>
-          
-        </Grid>
-        <Grid xs={10}>
-          <Table data={datasec}>
-            <Table.Column prop="property" label="النقاط" />
-            <Table.Column prop="description" label="المجموعة" />
-          </Table>
-        </Grid> */}
-
-      {/* </Grid.Container> */}
+     
 
 
     </>
