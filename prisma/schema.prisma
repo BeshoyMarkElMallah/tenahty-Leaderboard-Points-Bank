@@ -15,10 +15,12 @@ model Prep {
   id   String @id @default(cuid())
   name String 
   points Int
+  color String
 }
 
 model Sec {
   id   String @id @default(cuid())
   name String 
   points Int
+  color String
 }

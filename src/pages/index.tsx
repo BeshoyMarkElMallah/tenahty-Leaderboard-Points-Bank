@@ -1,15 +1,14 @@
-import styles from "./index.module.css";
 import { type NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
 import logo from "../../public/logo.jpeg";
 import Image from "next/image";
 import { trpc } from "../utils/trpc";
 import { Loading } from "@geist-ui/core";
-import { Grid, Paper, Table, TableBody, TableCell, TableContainer } from "@mui/material";
+import { Box, Card, Grid, Paper, Table, TableBody, TableCell, TableContainer } from "@mui/material";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-// import Card from "@geist-ui/core/esm/card/card";
+import { red,purple } from "@mui/material/colors";
+import { Container } from "@mui/system";
 
 const Home: NextPage = () => {
   const { data: PrepScores, isLoading } = trpc.scores?.prepScores.useQuery();
@@ -34,11 +33,10 @@ const Home: NextPage = () => {
 
 
       <Grid container spacing={2}>
-        <Grid item xs={4.5}>
-
+        <Grid item xs={5}>
         </Grid>
         <Grid item xs={6}>
-          <Image src={logo} alt="tenahty5" width={400} height={400} />
+          <Image src={logo} alt="tenahty5" width={300} height={200} />
         </Grid>
         <Grid item xs={6}>
           <h2 style={{ textAlign: 'center',fontSize:50,fontWeight:"bold" }}>مجموعات اعدادي</h2>
@@ -55,6 +53,7 @@ const Home: NextPage = () => {
               <TableHead>
                 <TableRow>
                   <TableCell style={{ textAlign: 'center',fontSize:50,fontWeight:"bold" }}>النقاط</TableCell>
+                  <TableCell style={{ textAlign: 'center',fontSize:50,fontWeight:"bold" }}>اللون</TableCell>
                   <TableCell style={{ textAlign: 'center',fontSize:50,fontWeight:"bold" }}>المجموعة</TableCell>
                 </TableRow>
               </TableHead>
@@ -63,6 +62,7 @@ const Home: NextPage = () => {
                   return <>
                   <TableRow>
                     <TableCell style={{ textAlign: "center",fontSize:50,}}>{score.points}</TableCell>
+                    <TableCell style={{ textAlign: "center",fontSize:50,}}><Box sx={{color:score.color,backgroundColor:score.color}}>t</Box></TableCell>
                     <TableCell style={{ textAlign: "center",fontSize:50,}}>{score.name}</TableCell>
                   </TableRow>
                   </>
@@ -81,6 +81,7 @@ const Home: NextPage = () => {
               <TableHead>
                 <TableRow>
                   <TableCell style={{ textAlign: 'center',fontSize:50,fontWeight:"bold" }}>النقاط</TableCell>
+                  <TableCell style={{ textAlign: 'center',fontSize:50,fontWeight:"bold" }}>اللون</TableCell>
                   <TableCell style={{textAlign: 'center',fontSize:50,fontWeight:"bold" }}>المجموعة</TableCell>
                 </TableRow>
               </TableHead>
@@ -89,6 +90,7 @@ const Home: NextPage = () => {
                   return <>
                   <TableRow>
                     <TableCell style={{ textAlign: "center",fontSize:50,}}>{score.points}</TableCell>
+                    <TableCell style={{ textAlign: "center",fontSize:50,}}><Box sx={{color:score.color,backgroundColor:score.color}}>t</Box></TableCell>
                     <TableCell style={{ textAlign: "center",fontSize:50,}}>{score.name}</TableCell>
                   </TableRow>
                   </>
