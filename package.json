@@ -10,7 +10,11 @@
     "start": "next start"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "@geist-ui/core": "^2.3.8",
+    "@mui/material": "^5.11.6",
+    "@mui/styled-engine-sc": "^5.11.0",
     "@prisma/client": "^4.5.0",
     "@tanstack/react-query": "^4.16.0",
     "@trpc/client": "^10.0.0",
@@ -20,6 +24,7 @@
     "next": "13.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "styled-components": "^5.3.6",
     "superjson": "1.9.1",
     "zod": "^3.18.0"
   },
