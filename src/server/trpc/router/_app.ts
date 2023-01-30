@@ -1,8 +1,8 @@
 import { router } from "../trpc";
-import { exampleRouter } from "./example";
+import { scoresRouter } from "./scores";
 
 export const appRouter = router({
-  example: exampleRouter,
+  scores: scoresRouter,
 });
 
 // export type definition of API
