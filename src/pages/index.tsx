@@ -51,7 +51,7 @@ const Home: NextPage = () => {
             <Table aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell style={{ textAlign: 'center',fontSize:50,fontWeight:"bold" }}>النقاط</TableCell>
+                  {/* <TableCell style={{ textAlign: 'center',fontSize:50,fontWeight:"bold" }}>النقاط</TableCell> */}
                   <TableCell style={{ textAlign: 'center',fontSize:50,fontWeight:"bold" }}>اللون</TableCell>
                   <TableCell style={{ textAlign: 'center',fontSize:50,fontWeight:"bold" }}>المجموعة</TableCell>
                 </TableRow>
@@ -60,7 +60,7 @@ const Home: NextPage = () => {
                 {PrepScores?.map((score: any, index: any) => {
                   return <>
                   <TableRow>
-                    <TableCell style={{ textAlign: "center",fontSize:50,}}>{score.points}</TableCell>
+                    {/* <TableCell style={{ textAlign: "center",fontSize:50,}}>{score.points}</TableCell> */}
                     <TableCell style={{ textAlign: "center",fontSize:50,}}><Box sx={{color:score.color,backgroundColor:score.color}}>t</Box></TableCell>
                     <TableCell style={{ textAlign: "center",fontSize:50,}}>{score.name}</TableCell>
                   </TableRow>
@@ -81,7 +81,7 @@ const Home: NextPage = () => {
             <Table aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell style={{ textAlign: 'center',fontSize:50,fontWeight:"bold" }}>النقاط</TableCell>
+                  {/* <TableCell style={{ textAlign: 'center',fontSize:50,fontWeight:"bold" }}>النقاط</TableCell> */}
                   <TableCell style={{ textAlign: 'center',fontSize:50,fontWeight:"bold" }}>اللون</TableCell>
                   <TableCell style={{textAlign: 'center',fontSize:50,fontWeight:"bold" }}>المجموعة</TableCell>
                 </TableRow>
@@ -90,7 +90,7 @@ const Home: NextPage = () => {
                 {SecScores?.map((score: any, index: any) => {
                   return <>
                   <TableRow>
-                    <TableCell style={{ textAlign: "center",fontSize:50,}}>{score.points}</TableCell>
+                    {/* <TableCell style={{ textAlign: "center",fontSize:50,}}>{score.points}</TableCell> */}
                     <TableCell style={{ textAlign: "center",fontSize:50,}}><Box sx={{color:score.color,backgroundColor:score.color}}>t</Box></TableCell>
                     <TableCell style={{ textAlign: "center",fontSize:50,}}>{score.name}</TableCell>
                   </TableRow>
