@@ -51,7 +51,7 @@ const Home: NextPage = () => {
             <Table aria-label="simple table">
               <TableHead>
                 {PrepScores?.map((score: any, index: any) => {
-                  if (score.isShown === true) {
+                  if (score.isShown === true && index === 0) {
 
                     return <>
                       <TableRow>
@@ -60,13 +60,17 @@ const Home: NextPage = () => {
                         <TableCell style={{ textAlign: 'center', fontSize: 50, fontWeight: "bold" }}>المجموعة</TableCell>
                       </TableRow>
                     </>
-                  } else {
-                    <TableRow>
-                      <TableCell style={{ textAlign: 'center', fontSize: 50, fontWeight: "bold" }}>اللون</TableCell>
-                      <TableCell style={{ textAlign: 'center', fontSize: 50, fontWeight: "bold" }}>المجموعة</TableCell>
-                    </TableRow>
+                  } else if (score.isShown === false && index === 0) {
+                    return <>
+                      <TableRow>
+                        <TableCell style={{ textAlign: 'center', fontSize: 50, fontWeight: "bold" }}>اللون</TableCell>
+                        <TableCell style={{ textAlign: 'center', fontSize: 50, fontWeight: "bold" }}>المجموعة</TableCell>
+                      </TableRow>
+                    </>
                   }
+
                 })}
+
               </TableHead>
               <TableBody>
                 {PrepScores?.map((score: any, index: any) => {
@@ -81,8 +85,10 @@ const Home: NextPage = () => {
                     </>
                   } else {
                     return <>
-                      <TableCell style={{ textAlign: "center", fontSize: 50, }}><Box sx={{ color: score.color, backgroundColor: score.color }}>t</Box></TableCell>
-                      <TableCell style={{ textAlign: "center", fontSize: 50, }}>{score.name}</TableCell>
+                      <TableRow>
+                        <TableCell style={{ textAlign: "center", fontSize: 50, }}><Box sx={{ color: score.color, backgroundColor: score.color }}>t</Box></TableCell>
+                        <TableCell style={{ textAlign: "center", fontSize: 50, }}>{score.name}</TableCell>
+                      </TableRow>
                     </>
                   }
 
@@ -101,8 +107,8 @@ const Home: NextPage = () => {
           <TableContainer component={Paper}>
             <Table aria-label="simple table">
               <TableHead>
-              {SecScores?.map((score: any, index: any) => {
-                  if (score.isShown === true) {
+                {SecScores?.map((score: any, index: any) => {
+                  if (score.isShown === true && index === 0) {
 
                     return <>
                       <TableRow>
@@ -111,13 +117,17 @@ const Home: NextPage = () => {
                         <TableCell style={{ textAlign: 'center', fontSize: 50, fontWeight: "bold" }}>المجموعة</TableCell>
                       </TableRow>
                     </>
-                  } else {
-                    <TableRow>
-                      <TableCell style={{ textAlign: 'center', fontSize: 50, fontWeight: "bold" }}>اللون</TableCell>
-                      <TableCell style={{ textAlign: 'center', fontSize: 50, fontWeight: "bold" }}>المجموعة</TableCell>
-                    </TableRow>
+                  } else if (score.isShown === false && index === 0) {
+                    return <>
+                      <TableRow>
+                        <TableCell style={{ textAlign: 'center', fontSize: 50, fontWeight: "bold" }}>اللون</TableCell>
+                        <TableCell style={{ textAlign: 'center', fontSize: 50, fontWeight: "bold" }}>المجموعة</TableCell>
+                      </TableRow>
+                    </>
                   }
+
                 })}
+
               </TableHead>
               <TableBody>
                 {SecScores?.map((score: any, index: any) => {
@@ -132,8 +142,10 @@ const Home: NextPage = () => {
                     </>
                   } else {
                     return <>
-                      <TableCell style={{ textAlign: "center", fontSize: 50, }}><Box sx={{ color: score.color, backgroundColor: score.color }}>t</Box></TableCell>
-                      <TableCell style={{ textAlign: "center", fontSize: 50, }}>{score.name}</TableCell>
+                      <TableRow>
+                        <TableCell style={{ textAlign: "center", fontSize: 50, }}><Box sx={{ color: score.color, backgroundColor: score.color }}>t</Box></TableCell>
+                        <TableCell style={{ textAlign: "center", fontSize: 50, }}>{score.name}</TableCell>
+                      </TableRow>
                     </>
                   }
 
