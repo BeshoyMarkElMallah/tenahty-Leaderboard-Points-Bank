@@ -12,6 +12,7 @@ export const scoresRouter = router({
                     name:true,
                     points:true,
                     color:true,
+                    isShown:true,
                 },
                 orderBy:{
                     points: "desc",
@@ -32,6 +33,7 @@ export const scoresRouter = router({
                     name:true,
                     points:true,
                     color:true,
+                    isShown:true,
                 },
                 orderBy:{
                     points: "desc",

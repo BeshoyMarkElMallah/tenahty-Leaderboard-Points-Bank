@@ -16,6 +16,7 @@ model Prep {
   name String 
   points Int
   color String
+  isShown Boolean @default(true)
 }
 
 model Sec {
@@ -23,4 +24,5 @@ model Sec {
   name String 
   points Int
   color String
+  isShown Boolean @default(true)
 }
