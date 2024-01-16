@@ -7,7 +7,7 @@ import { Loading } from "@geist-ui/core";
 import { Box, Card, Grid, Paper, Table, TableBody, TableCell, TableContainer } from "@mui/material";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { red, purple } from "@mui/material/colors";
+import { red,purple } from "@mui/material/colors";
 import { Container } from "@mui/system";
 
 const Home: NextPage = () => {
@@ -36,13 +36,13 @@ const Home: NextPage = () => {
         <Grid item xs={5}>
         </Grid>
         <Grid item xs={6}>
-
+         
         </Grid>
         <Grid item xs={6}>
-          <h2 style={{ textAlign: 'center', fontSize: 50, fontWeight: "bold" }}>مجموعات اعدادي</h2>
+          <h2 style={{ textAlign: 'center',fontSize:50,fontWeight:"bold" }}>مجموعات اعدادي</h2>
         </Grid>
         <Grid item xs={6}>
-          <h2 style={{ textAlign: 'center', fontSize: 50, fontWeight: "bold" }} >مجموعات ثانوي</h2>
+          <h2 style={{ textAlign: 'center', fontSize:50,fontWeight:"bold"}} >مجموعات ثانوي</h2>
         </Grid>
         <Grid item xs={1}>
         </Grid>
@@ -51,28 +51,29 @@ const Home: NextPage = () => {
             <Table aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell style={{ textAlign: 'center', fontSize: 50, fontWeight: "bold" }}>النقاط</TableCell>
-                  <TableCell style={{ textAlign: 'center', fontSize: 50, fontWeight: "bold" }}>اللون</TableCell>
-                  <TableCell style={{ textAlign: 'center', fontSize: 50, fontWeight: "bold" }}>المجموعة</TableCell>
+                  <TableCell style={{ textAlign: 'center',fontSize:50,fontWeight:"bold" }}>النقاط</TableCell>
+                  <TableCell style={{ textAlign: 'center',fontSize:50,fontWeight:"bold" }}>اللون</TableCell>
+                  <TableCell style={{ textAlign: 'center',fontSize:50,fontWeight:"bold" }}>المجموعة</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {PrepScores?.map((score: any, index: any) => {
-                  if (score.isShown === true) {
+                    if (score.isShown === true) {
 
-                    return <>
-                      <TableRow>
-                        <TableCell style={{ textAlign: "center", fontSize: 50, }}>{score.points}</TableCell>
+                      return <>
+                        <TableRow>
+                          <TableCell style={{ textAlign: "center", fontSize: 50, }}>{score.points}</TableCell>
+                          <TableCell style={{ textAlign: "center", fontSize: 50, }}><Box sx={{ color: score.color, backgroundColor: score.color }}>t</Box></TableCell>
+                          <TableCell style={{ textAlign: "center", fontSize: 50, }}>{score.name}</TableCell>
+                        </TableRow>
+                      </>
+                    } else {
+                      return <>
                         <TableCell style={{ textAlign: "center", fontSize: 50, }}><Box sx={{ color: score.color, backgroundColor: score.color }}>t</Box></TableCell>
                         <TableCell style={{ textAlign: "center", fontSize: 50, }}>{score.name}</TableCell>
-                      </TableRow>
-                    </>
-                  } else {
-                    return <>
-                      <TableCell style={{ textAlign: "center", fontSize: 50, }}><Box sx={{ color: score.color, backgroundColor: score.color }}>t</Box></TableCell>
-                      <TableCell style={{ textAlign: "center", fontSize: 50, }}>{score.name}</TableCell>
-                    </>
-                  }
+                      </>
+                    }
+                 
                 })}
               </TableBody>
 
@@ -80,37 +81,38 @@ const Home: NextPage = () => {
           </TableContainer>
         </Grid>
         <Grid item xs={2}>
-          <Image src={logo} alt="tenahty5" width={300} height={200} />
-          <h1 style={{ textAlign: "center", fontSize: 50, }}>بنك تيناهتي</h1>
-          <h1 style={{ textAlign: "center", fontSize: 40, }}>Tenahty Bank</h1>
+        <Image src={logo} alt="tenahty5" width={300} height={200} />
+        <h1 style={{ textAlign: "center",fontSize:50,}}>بنك تيناهتي</h1>
+        <h1 style={{ textAlign: "center",fontSize:40,}}>Tenahty Bank</h1>
         </Grid>
         <Grid item xs={4}>
           <TableContainer component={Paper}>
             <Table aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell style={{ textAlign: 'center', fontSize: 50, fontWeight: "bold" }}>النقاط</TableCell>
-                  <TableCell style={{ textAlign: 'center', fontSize: 50, fontWeight: "bold" }}>اللون</TableCell>
-                  <TableCell style={{ textAlign: 'center', fontSize: 50, fontWeight: "bold" }}>المجموعة</TableCell>
+                  <TableCell style={{ textAlign: 'center',fontSize:50,fontWeight:"bold" }}>النقاط</TableCell>
+                  <TableCell style={{ textAlign: 'center',fontSize:50,fontWeight:"bold" }}>اللون</TableCell>
+                  <TableCell style={{textAlign: 'center',fontSize:50,fontWeight:"bold" }}>المجموعة</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {SecScores?.map((score: any, index: any) => {
-                   if (score.isShown === true) {
+                    if (score.isShown === true) {
 
-                    return <>
-                      <TableRow>
-                        <TableCell style={{ textAlign: "center", fontSize: 50, }}>{score.points}</TableCell>
+                      return <>
+                        <TableRow>
+                          <TableCell style={{ textAlign: "center", fontSize: 50, }}>{score.points}</TableCell>
+                          <TableCell style={{ textAlign: "center", fontSize: 50, }}><Box sx={{ color: score.color, backgroundColor: score.color }}>t</Box></TableCell>
+                          <TableCell style={{ textAlign: "center", fontSize: 50, }}>{score.name}</TableCell>
+                        </TableRow>
+                      </>
+                    } else {
+                      return <>
                         <TableCell style={{ textAlign: "center", fontSize: 50, }}><Box sx={{ color: score.color, backgroundColor: score.color }}>t</Box></TableCell>
                         <TableCell style={{ textAlign: "center", fontSize: 50, }}>{score.name}</TableCell>
-                      </TableRow>
-                    </>
-                  } else {
-                    return <>
-                      <TableCell style={{ textAlign: "center", fontSize: 50, }}><Box sx={{ color: score.color, backgroundColor: score.color }}>t</Box></TableCell>
-                      <TableCell style={{ textAlign: "center", fontSize: 50, }}>{score.name}</TableCell>
-                    </>
-                  }
+                      </>
+                    }
+                
                 })}
               </TableBody>
 
@@ -119,7 +121,7 @@ const Home: NextPage = () => {
         </Grid>
       </Grid>
 
-
+     
 
 
     </>
