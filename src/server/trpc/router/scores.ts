@@ -16,6 +16,7 @@ export const scoresRouter = router({
                 },
                 orderBy:{
                     points: "desc",
+                    name: "asc",
                 }
             });
         } catch (error) {
@@ -37,6 +38,7 @@ export const scoresRouter = router({
                 },
                 orderBy:{
                     points: "desc",
+                    name: "asc",
                 }
             });
         } catch (error) {
