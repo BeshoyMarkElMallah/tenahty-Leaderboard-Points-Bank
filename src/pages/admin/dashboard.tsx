@@ -46,8 +46,8 @@ const AdminDashboard: NextPage = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loadingPrepToggle, setLoadingPrepToggle] = useState(false);
   const [loadingSecToggle, setLoadingSecToggle] = useState(false);
-  const [prepScoresEdit, setPrepScoresEdit] = useState<{ [key: string]: number }>({});
-  const [secScoresEdit, setSecScoresEdit] = useState<{ [key: string]: number }>({});
+  const [prepScoresEdit, setPrepScoresEdit] = useState<{ [key: string]: string }>({});
+  const [secScoresEdit, setSecScoresEdit] = useState<{ [key: string]: string }>({});
 
   // Queries
   const { data: prepScores, refetch: refetchPrep } = trpc.scores?.prepScores.useQuery();
@@ -84,7 +84,7 @@ const AdminDashboard: NextPage = () => {
 
   const handleScoreChange = (
     id: string,
-    newPoints: number,
+    newPoints: string,
     isPrepGroup: boolean
   ) => {
     if (isPrepGroup) {
