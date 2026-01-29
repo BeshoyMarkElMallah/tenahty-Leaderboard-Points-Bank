@@ -54,18 +54,10 @@ const AdminDashboard: NextPage = () => {
   const { data: secScores, refetch: refetchSec } = trpc.scores?.secScores.useQuery();
 
   // Mutations
-  const updatePrepScoreMutation = trpc.scores?.updatePrepScore.useMutation({
-    onSuccess: () => refetchPrep(),
-  });
-  const updateSecScoreMutation = trpc.scores?.updateSecScore.useMutation({
-    onSuccess: () => refetchSec(),
-  });
-  const togglePrepVisibilityMutation = trpc.scores?.togglePrepVisibility.useMutation({
-    onSuccess: () => refetchPrep(),
-  });
-  const toggleSecVisibilityMutation = trpc.scores?.toggleSecVisibility.useMutation({
-    onSuccess: () => refetchSec(),
-  });
+  const updatePrepScoreMutation = trpc.scores?.updatePrepScore.useMutation();
+  const updateSecScoreMutation = trpc.scores?.updateSecScore.useMutation();
+  const togglePrepVisibilityMutation = trpc.scores?.togglePrepVisibility.useMutation();
+  const toggleSecVisibilityMutation = trpc.scores?.toggleSecVisibility.useMutation();
 
   // Check authentication
   useEffect(() => {
@@ -98,6 +90,9 @@ const AdminDashboard: NextPage = () => {
     const scoresEdit = isPrepGroup ? prepScoresEdit : secScoresEdit;
     const groups = isPrepGroup ? prepScores : secScores;
     const mutation = isPrepGroup ? updatePrepScoreMutation : updateSecScoreMutation;
+    const refetch = isPrepGroup ? refetchPrep : refetchSec;
+
+    const mutationPromises: Promise<any>[] = [];
 
     Object.entries(scoresEdit).forEach(([id, value]) => {
       const numValue = parseInt(value as string);
@@ -105,16 +100,34 @@ const AdminDashboard: NextPage = () => {
         const group = groups?.find((g: any) => g.id === id);
         if (group) {
           const newPoints = group.points + numValue;
-          mutation.mutate({ id, points: newPoints });
+          mutationPromises.push(
+            new Promise((resolve) => {
+              mutation.mutate(
+                { id, points: newPoints },
+                {
+                  onSuccess: () => resolve(null),
+                  onError: () => resolve(null),
+                  onSettled: () => resolve(null),
+                }
+              );
+            })
+          );
         }
       }
     });
 
-    if (isPrepGroup) {
-      setPrepScoresEdit({});
-    } else {
-      setSecScoresEdit({});
-    }
+    // Use Promise.race with timeout fallback
+    Promise.race([
+      Promise.all(mutationPromises),
+      new Promise((resolve) => setTimeout(resolve, 3000)),
+    ]).then(() => {
+      refetch();
+      if (isPrepGroup) {
+        setPrepScoresEdit({});
+      } else {
+        setSecScoresEdit({});
+      }
+    });
   };
 
   const getDisplayScore = (groupId: string, currentPoints: number, isPrepGroup: boolean) => {
@@ -128,6 +141,7 @@ const AdminDashboard: NextPage = () => {
     const groups = isPrepGroup ? prepScores : secScores;
     const allShown = groups.every((g: any) => g.isShown);
     const mutation = isPrepGroup ? togglePrepVisibilityMutation : toggleSecVisibilityMutation;
+    const refetch = isPrepGroup ? refetchPrep : refetchSec;
 
     if (isPrepGroup) {
       setLoadingPrepToggle(true);
@@ -135,22 +149,36 @@ const AdminDashboard: NextPage = () => {
       setLoadingSecToggle(true);
     }
 
-    // Send all mutations
-    groups.forEach((group: any) => {
-      mutation.mutate({
-        id: group.id,
-        isShown: !allShown,
-      });
-    });
+    // Create promises for each mutation
+    const mutationPromises = groups.map(
+      (group: any) =>
+        new Promise((resolve) => {
+          mutation.mutate(
+            {
+              id: group.id,
+              isShown: !allShown,
+            },
+            {
+              onSuccess: () => resolve(null),
+              onError: () => resolve(null),
+              onSettled: () => resolve(null),
+            }
+          );
+        })
+    );
 
-    // Reset loading state after a reasonable delay
-    setTimeout(() => {
+    // Wait for all mutations to complete with a timeout fallback
+    Promise.race([
+      Promise.all(mutationPromises),
+      new Promise((resolve) => setTimeout(resolve, 3000)),
+    ]).then(() => {
+      refetch();
       if (isPrepGroup) {
         setLoadingPrepToggle(false);
       } else {
         setLoadingSecToggle(false);
       }
-    }, 1000);
+    });
   };
 
   if (!isAuthenticated) {
